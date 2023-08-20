@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- lato font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+     <!-- roboto font family link, all the body text will be this font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        body {
+            background: url('./assets/b1.svg');
+            background-position: cover;
+            background-size: 100vw auto;
+            height: 100%;
+            padding-bottom:50px;
+        }
+
+        .centered-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: red;
+        }
+
+        .container-fluid {
+            background-color: red;
+        }
+
+        .navbar-brand {
+            font-family: "lato", sans-serif;
+            font-size: 34px;
+            color: white;
+            font-weight: bold;
+            height: 80px;
+            cursor: pointer;
+        }
+
+        .navbar-brand:hover {
+            color: white;
+        }
+
+        #nav-bar-fixed {
+            background: red;
+            margin: 0;
+            padding: 0;
+            height: 80px;
+        }
+        #result{
+            color:red;
+            font-weight: bold;
+            font-size:22px;
+            font-family:"roboto", sans-serif;
+        }
+        /* section-2 css */
+
+        .BMI-custom-css {
+            border: 2px solid red;
+            background: white;
+            padding:20px;
+            margin-top: 50px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        h1 {
+            color:red;
+            font-weight: bold;
+        }
+        .custom-level{
+            color:black;
+            font-weight:bold;
+        }
+    
+
+        .calculate-btn {
+            border:1px solid red;
+             margin-top:20px;
+              margin-left:90px;
+               color:red;
+                 height: 40px;
+                  width: 150px;
+        }
+       /* section-3 */
+       h5{
+        color:black;
+        font-size: 22px;
+        font-family: "lato", sans-serif;
+        font-weight: bold;
+       }
+       p{
+        color:black;
+        font-size: 18px;
+        font-family: "roboto" sans-serif;
+       }
+       .table{
+        border:1px solid teal;
+       }
+       .th{
+        border-right:1px solid teal;
+       }
+     
+       #custom-tb {
+        background: teal;
+        color:white;
+       }
+
+
+        @media (max-width: 992px) {
+            .BMI-custom-css {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="centered-item">
+
+        <nav class="navbar navbar-expand-md bg-body-tertiary" id="nav-bar-fixed">
+            <div class="container-fluid">
+                <a class="navbar-brand">Calculate.BMI</a>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="BMI-custom-css">
+        <div class="container" style="display:flex; align-items: center; justify-content: center; ">
+            <div>
+                
+                    <h1>Calculate.BMI</h1>
+                    
+                    <form onsubmit="calculateBMI(event)">
+                    
+                      
+                        <div class="row" style="margin-bottom:20px;">
+                            <div class="col-md-3 col-gap"> <!-- Adjust the column size as needed -->
+                                <label class="custom-level" for="weight">Age</label>
+                            </div>
+                            <div class="col-md-9 col-gap" > <!-- Adjust the column size as needed -->
+                                <input type="number" id="age" required step="0.01"> 
+                            </div>
+                        </div>
+
+                        <div class="row"  style="margin-bottom:10px;">
+                            <div class="col-md-3 col-gap"> <!-- Adjust the column size as needed -->
+                                <label for="weight" class="custom-level" style="padding-right:40px;">Weight(kg):</label>
+                            </div>
+                            <div class="col-md-9"> <!-- Adjust the column size as needed -->
+                                <input type="number" id="weight" required step="0.01">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px">
+                            <div class="col-md-3"> <!-- Adjust the column size as needed -->
+                                <label for="height" class="custom-level">Height(m):</label>
+                            </div>
+                            <div class="col-md-9"> <!-- Adjust the column size as needed -->
+                                <input type="number" id="height" required step="0.01">
+                            </div>
+                        </div>
+
+                        <input class="calculate-btn" type="submit" value="Calculate BMI" >
+                    </form>
+                
+                    <div id="result" ></div>
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="BMI-custom-css">
+        <div class="container text-left">
+            <div class="row align-items-start">
+              <div class="col">
+                <h5>BMI introduction</h5>
+                <p>BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height. Specifically, the value obtained from the calculation of BMI is used to categorize whether a person is underweight, normal weight, overweight, or obese depending on what range the value falls between. These ranges of BMI vary based on factors such as region and age, and are sometimes further divided into subcategories such as severely underweight or very severely obese. Being overweight or underweight can have significant health effects, so while BMI is an imperfect measure of healthy body weight, it is a useful indicator of whether any additional testing or action is required.
+                     Refer to the table below to see the different categories based on BMI that are used by the calculator.</p>
+              </div>
+             
+            </div>
+          </div>
+    </div>
+                
+    <div class="BMI-custom-css">
+        <div class="container text-left">
+            <div class="row align-items-start">
+              <div class="col">
+                <h5>BMI table for adults</h5>
+                <p>This is the World Health Organization's (WHO) recommended body weight based on BMI values for adults. 
+                    It is used for both men and women, age 20 or older.</p>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" id="custom-tb">Classification</th>
+                            <th scope="col" id="custom-tb">	BMI range - kg/m2</th>
+                          </tr>
+                        </thead>
+                        <tbody class="tb">
+                          <tr >
+                            <th scope="row" class="th">Severe Thinness</th>
+                            <td>< 16</td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="th">Moderate Thinness</th>
+                            <td>16 - 17</td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="th">Mild Thinness</th>
+                            <td>17 - 18.5</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" class="th">Normal</th>
+                            <td>18.5 - 25</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" class="th">Overweight</th>
+                            <td>25 - 30</td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="th">Obese Class I</th>
+                            <td>30 - 35</td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="th">Obese Class II</th>
+                            <td>35 - 40</td>
+                          </tr>
+
+                          <tr>
+                            <th scope="row" class="th">Obese Class III</th>
+                            <td>> 40</td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+              </div>
+             
+            </div>
+          </div>
+    </div>
+
+
+    <script src="BMI.js"></script>
+</body>
+
+</html>
